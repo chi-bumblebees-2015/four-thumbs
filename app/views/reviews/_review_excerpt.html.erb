@@ -1,0 +1,10 @@
+  <ul>
+  	<li><%= link_to(review.user.name, user_path(review.user) ) %> 
+  	<% if review.user.trusted %>
+  	- TRUSTED USER
+  	<%end%>
+  	</li>
+  	<li><%= review.title %></li>
+  	<li><%= review.rating %></li>
+  	<li><%= truncate(sanitize(review.content), length: 150, omission: "...")%> - <%= link_to("Read More", review_path(review) )%></li>
+  </ul>
