@@ -11,6 +11,7 @@ class ReviewsController < ApplicationController
 
 
 	def new
+	## USER LINK? ## USER SESSION
 	  @review = Review.new
 	end
 
