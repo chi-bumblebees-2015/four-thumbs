@@ -9,10 +9,10 @@ user2 = User.create(name: "user2", password: "superdogs", email: "test2@gmail.co
 user3 = User.create(name: "user3", password: "superdogs", email: "test3@gmail.com", trusted: true)
 
 
-Review.create(user: user1, movie: movie1, content: "this is my entire review", title: "title of review", rating: 4)
-Review.create(user: user1, movie: movie2, content: "this is my entire review", title: "title of review", rating: 3)
-Review.create(user: user1, movie: movie3, content: "this is my entire review", title: "title of review", rating: 2)
-Review.create(user: user2, movie: movie1, content: "this is my entire review", title: "title of review", rating: 4)
-Review.create(user: user3, movie: movie2, content: "this is my entire review", title: "title of review", rating: 4)
-Review.create(user: user3, movie: movie4, content: "this is my entire review", title: "title of review", rating: 4)
-Review.create(user: user3, movie: movie3, content: "this is my entire review", title: "title of review", rating: 4)
+Review.create(user: user1, movie: movie1, content: "#{Faker::Lorem.paragraph(2, true, 4)}", title: "title of review", rating: 4)
+Review.create(user: user1, movie: movie2, content: "#{Faker::Lorem.paragraph(2, true, 4)}", title: "title of review", rating: 3)
+Review.create(user: user1, movie: movie3, content: "#{Faker::Lorem.paragraph(2, true, 4)}", title: "title of review", rating: 2)
+Review.create(user: user2, movie: movie1, content: "#{Faker::Lorem.paragraph(2, true, 4)}", title: "title of review", rating: 4)
+Review.create(user: user3, movie: movie2, content: "#{Faker::Lorem.paragraph(2, true, 4)}", title: "title of review", rating: 4)
+Review.create(user: user3, movie: movie4, content: "#{Faker::Lorem.paragraph(2, true, 4)}", title: "title of review", rating: 4)
+Review.create(user: user3, movie: movie3, content: "#{Faker::Lorem.paragraph(2, true, 4)}", title: "title of review", rating: 4)

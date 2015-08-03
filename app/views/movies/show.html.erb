@@ -10,6 +10,7 @@
   	</li>
   	<li><%= review.title %></li>
   	<li><%= review.rating %></li>
+  	<li><%= truncate(sanitize(review.content), length: 150, omission: "...")%> - <%= link_to("Read More", review_path(review) )%></li>
   </ul>
 <% end %>
 
@@ -23,6 +24,7 @@
   	</li>
   	<li><%= review.title %></li>
   	<li><%= review.rating %></li>
+  	<li><%= truncate(sanitize(review.content), length: 150, omission: "...")%> - <%= link_to("Read More", review_path(review) )%></li>
   </ul>
 <% end %>
 
@@ -36,6 +38,6 @@
   	</li>
   	<li><%= review.title %></li>
   	<li><%= review.rating %></li>
-  	<li><%= truncate(sanitize(review.content), length: 5, omission: "...")%> - <%= link_to("Read More", review_path(review) )%></li>
+  	<li><%= truncate(sanitize(review.content), length: 150, omission: "...")%> - <%= link_to("Read More", review_path(review) )%></li>
   </ul>
 <% end %>
