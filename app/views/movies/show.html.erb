@@ -1,6 +1,14 @@
 <h1><%= @movie.name %></h1>
 <p><%= @movie.plot_summary %></p>
-<h2>Reviews</h2>
-<% @movie.reviews.each do |review| %>
-  <li><%= review.title %></li>
+<h2>All Reviews</h2>
+<% @movie.reviews.order(rating: :desc).each do |review| %>
+  <ul>
+  	<li><%= review.user.username %> 
+  	<% if review.user.trusted %>
+  	- TRUSTED USER
+  	<%end%>
+  	</li>
+  	<li><%= review.title %></li>
+  	<li><%= review.rating %></li>
+  </ul>
 <% end %>
