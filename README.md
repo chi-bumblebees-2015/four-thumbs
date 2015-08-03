@@ -6,5 +6,5 @@ Four Thumbs is a movie review forum in which users can post reviews and ratings 
 
 [Trello To Do](https://trello.com/b/bkWywjJP/four-thumbs-movie-review-forum)
 
-![schema 1](images/schema2.png)
+![schema 1](schema_screenshots/schema2.png)
 
