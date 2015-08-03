@@ -1,0 +1,6 @@
+<h1><%= @movie.name %></h1>
+<p><%= @movie.plot_summary %></p>
+<h2>Reviews</h2>
+<% @movie.reviews.each do |review| %>
+  <li><%= review.title %></li>
+<% end %>
