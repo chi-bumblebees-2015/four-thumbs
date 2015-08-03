@@ -4,3 +4,9 @@ rvm:
   - 2.1.0
 
 bundler_args: --without production
+
+addons:
+  postgresql: "9.3"
+
+before_script:
+  - psql -c 'create database four_thumbs_test;' -U postgres
