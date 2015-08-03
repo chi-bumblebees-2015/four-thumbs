@@ -10,3 +10,19 @@ Four Thumbs is a movie review forum in which users can post reviews and ratings 
 
 ![schema 1](schema_screenshots/schema2.png)
 
+## Wireframes
+
+### Homepage
+![homepage] (wireframes/Home-page.png)
+
+### Movie Page
+![moviepage] (wireframes/movie-view.png)
+
+### New Review Page
+![new-review] (wireframes/new-review.png)
+
+### Review Page
+![review] (wireframes/review.png)
+
+### User Page
+![user-page] (wireframes/user-page.png)
