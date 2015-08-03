@@ -1,12 +1,11 @@
 class ReviewsController < ApplicationController
-	before_action :find_movie except: [:index]
 
 	def index
 	end
 
 	def show
 		@review = Review.find(params[:id])
-
+		@movie = @review.movie
 	end
 
 
@@ -18,16 +17,14 @@ class ReviewsController < ApplicationController
 
 	def create
 		## USER LINK? ## USER SESSION
-	  	@review = @movie.reviews.new(review_params)
+  	@review = @movie.reviews.new(review_params)
 
-
-	  	if @review.save
-	  		redirect_to [@movie, @review]
-	  	else
-	  		@error = "Could not save review. Please revise."
-	  		render "new"
-	  	end
-
+  	if @review.save
+  		redirect_to @review
+  	else
+  		@error = "Could not save review. Please revise."
+  		render "new"
+  	end
 	end
 
 
@@ -38,7 +35,7 @@ class ReviewsController < ApplicationController
 
 	def update
 		if @review.update(review_params)
-			redirect_to [@movie, @review]
+			redirect_to @review
 		else
 			render "edit"
 		end
@@ -51,12 +48,4 @@ class ReviewsController < ApplicationController
 	def review_params
 		params.require(:review).permit(:content, :title, :rating)
 	end
-
-	def find_movie
-		@movie = Movie.find(params[:id])
-	end
-
-
-
-
 end
