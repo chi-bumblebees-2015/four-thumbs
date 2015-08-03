@@ -6,3 +6,6 @@
   <%= submit_tag "Submit" %>
 
 <% end %>
+<% if @error %>
+  <p><%= @error %></p>
+<% end %>
