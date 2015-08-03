@@ -2,3 +2,10 @@
 <% @movies.each do |movie| %>
   <li><%= link_to movie.name, movie, id: "movie-#{movie.id}" %></li>
 <% end %>
+<a href="/users/new">New User</a>
+<a href="/login">Log In</a>
+<a href="/logout">Log out</a>
+<br>
+<% if current_user %>
+  <%= current_user.name %>
+<% end %>

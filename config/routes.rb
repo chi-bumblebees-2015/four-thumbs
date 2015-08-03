@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'index#welcome'
 
+  get 'users/login' => 'users#login'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -17,6 +19,9 @@ Rails.application.routes.draw do
   resources :users
   resources :movies
   resources :reviews
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
 
 
   # Example resource route with options:
