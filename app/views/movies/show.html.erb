@@ -3,7 +3,7 @@
 <h2>Trusted Reviews</h2>
 <% @movie.trusted_reviews.each do |review| %>
   <ul>
-  	<li><%= review.user.name %> 
+  	<li><%= link_to(review.user.name, user_path(review.user) ) %> 
   	<% if review.user.trusted %>
   	- TRUSTED USER
   	<%end%>
@@ -16,7 +16,7 @@
 <h2>Untrusted Reviews (or User Reviews)</h2>
 <% @movie.user_reviews.each do |review| %>
   <ul>
-  	<li><%= review.user.name %> 
+  	<li><%= link_to(review.user.name, user_path(review.user) ) %> 
   	<% if review.user.trusted %>
   	- TRUSTED USER
   	<%end%>
@@ -29,7 +29,7 @@
 <h2>All Reviews</h2>
 <% @movie.all_reviews.each do |review| %>
   <ul>
-  	<li><%= review.user.name %> 
+  	<li><%= link_to(review.user.name, user_path(review.user) ) %> 
   	<% if review.user.trusted %>
   	- TRUSTED USER
   	<%end%>
