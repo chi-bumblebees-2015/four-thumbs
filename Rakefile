@@ -15,3 +15,11 @@ task :default => :spec
 require 'rspec/core/rake_task'
 
 RSpec::Core::RakeTask.new
+
+namespace :db do
+  namespace :test do
+    task :prepare => :environment do
+      Rake::Task["db:seed"].invoke
+    end
+  end
+end
