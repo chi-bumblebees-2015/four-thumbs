@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/chi-bumblebees-2015/four-thumbs.svg?branch=master)](https://travis-ci.org/chi-bumblebees-2015/four-thumbs)
+
 # Four Thumbs Movie Review Forum
 
 ## Purpose
