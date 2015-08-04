@@ -57,6 +57,16 @@ class ReviewsController < ApplicationController
     end
 	end
 
+  def upvote
+    @review = Review.find(params[:id])
+    if current_user && (current_user.voted_for? @review)
+      @review.unliked_by current_user
+    elsif current_user
+      @review.liked_by current_user
+    end
+    redirect_to :back
+  end
+
 
 
 	private
