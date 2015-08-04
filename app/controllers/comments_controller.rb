@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
       @movie = @review.movie
       @new_comment = Comment.new(comment_params)
       @new_comment.review = @review
+      @new_comment.user = current_user
       if @new_comment.save
         redirect_to [@movie, @review]
       else
