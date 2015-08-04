@@ -38,13 +38,9 @@ a.selectedTab {
 
 .brand-logo {
 	font-family: 'Damion', cursive;
-	font-size: 38pt;
+	font-size: 45pt;
 }
 
-.mainbody {
-  height:100vh;
-  background-color: #c62828;
-}
 
 .mainbody a{
   color: #fff;

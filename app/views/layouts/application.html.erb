@@ -25,6 +25,7 @@
       <%= link_to image_tag('Thumb_Logo.png', :height => 62), "/" %><a id="logo-container" href="/" class="brand-logo">Four Thumbs</a>
 
       <ul class="right hide-on-med-and-down">
+      <li><a id="login" href="#">All Movies</a></li>
         <% if current_user %>
           <li><a href="/users/<%= current_user.id %>">Welcome, <%= current_user.name %></a></li>
           <li><a id="logout" href="/logout">Log out</a></li>
@@ -35,20 +36,10 @@
       </ul>
     </div>
   </nav>
+  <BR>
+  <BR>
+  <div class="container">
     <div class="row">
-      <div class="col s2 red darken-3">
-        <div class="mainbody">
-       <ul>
-          <li><a href="#!">First Sidebar Link</a></li>
-          <li><a href="#!">Second Sidebar Link</a></li>
-          <li><a href="#!">Second Sidebar Link</a></li>
-          <li><a href="#!">Second Sidebar Link</a></li>
-          <li><a href="#!">Second Sidebar Link</a></li>
-        </ul>
-      </div>
-      </div>
-
-      <div class="col s10">
       <%= yield %>
     </div>
   </div>
@@ -56,7 +47,7 @@
   <footer class="page-footer orange">
     <div class="container">
       <div class="row">
-        <div class="col s12 offset-s10">
+        <div class="col s2 offset-s10">
           <h5 class="white-text">FOUR THUMBS</h5>
           <p class="grey-text text-lighten-4">Mike really likes bikes and thumbs.</p>
         </div>
