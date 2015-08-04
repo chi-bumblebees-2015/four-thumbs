@@ -9,11 +9,13 @@ feature "User viewing a movie" do
 
   scenario "user can see 'Trusted Reviews'" do
     visit '/movies/1'
+    find('#trusted').click
     expect(page).to have_content("Trusted Reviews")
   end
 
   scenario "user can see 'User Reviews'" do
     visit '/movies/1'
+    find('#user').click
     expect(page).to have_content("User Reviews")
   end
 
