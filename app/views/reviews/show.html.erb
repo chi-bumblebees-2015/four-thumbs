@@ -1,13 +1,16 @@
 <h2><%= @review.title %> | <%= link_to @review.movie.name, @review.movie %></h2>
-<h4>By: <%= link_to @review.user.name, @review.user %></h4>
+<h4>By: <%= link_to @review.user.name, @review.user %> <%= @review.user.trusted_string %></h4>
 
-<% if current_user && (current_user.voted_for? @review) %>
-  <b>
+<p><%= @review.get_upvotes.size %> Likes</p>
+<% if current_user %>
+  <%= link_to like_review_path(@review), method: :put do %>
+    <% if (current_user.voted_for? @review) %>
+      Unlike
+    <% else %>
+      Like!
+    <% end %>
+  <% end %>
 <% end %>
-<%= link_to like_review_path(@review), method: :put do %>
-  Like!<% end %>
-</b>
-<%= @review.get_upvotes.size %>
 
 <div>
   <p>Rating: <%= @review.rating %> thumbs up</p>
@@ -25,7 +28,11 @@
 
 <h4>Comments</h4>
 <% @comments.each do |comment| %>
-  <p><%= comment.user.name%></p>
+  <p><%= comment.user.name%> <strong><%= comment.user.trusted_string %></strong>
+    <% if comment.user == @review.user %>
+      | <strong>Original Reviewer</strong>
+    <% end %>
+  </p>
   <p><%= comment.content %></p>
 <%end%>
 
