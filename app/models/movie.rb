@@ -14,10 +14,6 @@ class Movie < ActiveRecord::Base
   end
 
   def movie_score
-    user_count = self.reviews.select{|review| !review.user.trusted }.count
-    user_total = self.reviews.select{|review| !review.user.trusted }.map{|review| review.rating}.reduce(:+)
-    trusted_count = self.reviews.select{|review| review.user.trusted }.count
-    trusted_total = self.reviews.select{|review| review.user.trusted }.map{|review| review.rating}.reduce(:+)
     user_review_number_total = self.reviews.select{|review| !review.user.trusted }.map{|review| review.user.reviews.count * review.rating}.reduce(:+)
     user_review_number_count = self.reviews.select{|review| !review.user.trusted }.map{|review| review.user.reviews.count}.reduce(:+)
     trusted_review_number_total = self.reviews.select{|review| review.user.trusted }.map{|review| review.user.reviews.count * review.rating}.reduce(:+)
