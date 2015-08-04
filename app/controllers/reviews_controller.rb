@@ -6,7 +6,8 @@ class ReviewsController < ApplicationController
 	def show
 		@review = Review.find(params[:id])
 		@movie = @review.movie
-
+    @comments = @review.comments
+    @new_comment = Comment.new
 	end
 
 

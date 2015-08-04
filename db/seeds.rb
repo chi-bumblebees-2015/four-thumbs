@@ -26,5 +26,5 @@ def random_review
 end
 
 10.times do
-  Comment.create(user: random_user, review: random_review, content: "#{Faker::Lorem.sentences(1, true)}")
+  Comment.create(user: random_user, review: random_review, content: "#{Faker::Lorem.sentence(1, true)}")
 end
