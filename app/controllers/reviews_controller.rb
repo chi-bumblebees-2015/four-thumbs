@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
     @movie = Movie.find(params[:movie_id])
 	  @review = Review.new
     if !current_user
-      redirect_to '/'
+      redirect_to '/login'
     end
 	end
 
@@ -31,7 +31,7 @@ class ReviewsController < ApplicationController
         render "new"
       end
     else
-      redirect_to '/'
+      redirect_to '/login'
     end
 	end
 
@@ -40,7 +40,7 @@ class ReviewsController < ApplicationController
 	def edit
     @review = Review.find(params[:id])
     if current_user != @review.user
-      redirect_to '/'
+      redirect_to [@review.movie, @review]
     end
 	end
 
@@ -54,7 +54,7 @@ class ReviewsController < ApplicationController
   			render "edit"
   		end
     else
-      redirect_to '/'
+      redirect_to [@review.movie, @review]
     end
 	end
 
