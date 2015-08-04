@@ -1,7 +1,8 @@
-<h3><%= link_to review.title, review %> - <%= review.rating %>/4</h4>
+
+<h3><%= link_to(review.title, movie_review_path(review.movie, review)) %> - <%= review.rating %>/4</h4>
 <h4><%= link_to(review.user.name, user_path(review.user) ) %>
 <% if review.user.trusted %>
 - TRUSTED USER
 <%end%></h4>
 
-<%= truncate(sanitize(review.content), length: 150, omission: "...")%> - <%= link_to("Read More", review_path(review) )%>
+<%= truncate(sanitize(review.content), length: 150, omission: "...")%> - <%= link_to("Read More", movie_review_path(review.movie, review) )%>
