@@ -22,3 +22,15 @@
 <% if @review.user == current_user %>
   <%= link_to "Edit your review", edit_movie_review_path(@review.movie, @review) %>
 <% end %>
+
+<h4>Comments</h4>
+<% @comments.each do |comment| %>
+  <p><%= comment.user.name%></p>
+  <p><%= comment.content %></p>
+<%end%>
+
+<%if session[:user_id] %>
+  <%= render partial: "comments/comments_form", locals: { review: @review, new_comment: @new_comment } %>
+<%else%>
+  <p>To comment, you need to login or register for an account.</p>
+<%end%>

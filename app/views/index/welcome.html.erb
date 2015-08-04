@@ -4,8 +4,8 @@
 <% end %>
 <% if current_user %>
   <p>Welcome, <%= current_user.name %></p>
-  <a href="/logout">Log out</a>
+  <a id="logout" href="/logout">Log out</a>
 <% else %>
-  <a href="/users/new">New User</a>
-  <a href="/login">Log In</a>
+  <a id="new_user" href="/users/new">New User</a>
+  <a id="login" href="/login">Log In</a>
 <% end %>
