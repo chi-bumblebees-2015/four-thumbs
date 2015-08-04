@@ -16,3 +16,15 @@ Review.create(user: user2, movie: movie1, content: "#{Faker::Lorem.paragraph(2, 
 Review.create(user: user3, movie: movie2, content: "#{Faker::Lorem.paragraph(2, true, 4)}", title: "title of review", rating: 4)
 Review.create(user: user3, movie: movie4, content: "#{Faker::Lorem.paragraph(2, true, 4)}", title: "title of review", rating: 4)
 Review.create(user: user3, movie: movie3, content: "#{Faker::Lorem.paragraph(2, true, 4)}", title: "title of review", rating: 4)
+
+def random_user
+  User.all.sample
+end
+
+def random_review
+  Review.all.sample
+end
+
+10.times do
+  Comment.create(user: random_user, review: random_review, content: "#{Faker::Lorem.sentence(1, true)}")
+end
