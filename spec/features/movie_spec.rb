@@ -21,5 +21,4 @@ feature "User viewing a movie" do
     visit '/movies/1'
     expect(page).to have_content ("All Reviews")
   end
-
 end
