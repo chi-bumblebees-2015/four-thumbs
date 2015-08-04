@@ -1,5 +1,10 @@
 <h1><%= @movie.name %></h1>
+<div>
+  <p>Rating: <%= @movie.movie_score %> thumbs up</p>
+</div>
 <p><%= @movie.plot_summary %></p>
+
+
 <ul id="tabs">
   <li><a href="#all">All Reviews</a></li>
   <% if @movie.trusted_reviews.length > 0 %>
