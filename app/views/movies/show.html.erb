@@ -1,25 +1,35 @@
 <h1><%= @movie.name %></h1>
 <p><%= @movie.plot_summary %></p>
 <ul id="tabs">
-  <li><a href="#trusted">Trusted Reviews</a></li>
-  <li><a href="#user">User Reviews</a></li>
   <li><a href="#all">All Reviews</a></li>
+  <% if @movie.trusted_reviews.length > 0 %>
+    <li><a href="#trusted">Trusted Reviews</a></li>
+  <% end %>
+  <% if @movie.user_reviews.length > 0 %>
+    <li><a href="#user">User Reviews</a></li>
+  <% end %>
 </ul>
-
-<div class="tabContent" id="trusted">
-  <% @movie.trusted_reviews.each do |review| %>
-    <%= render partial: "reviews/review_excerpt", locals: { review: review } %>
-  <% end %>
-</div>
-
-<div class="tabContent" id="user">
-  <% @movie.user_reviews.each do |review| %>
-    <%= render partial: "reviews/review_excerpt", locals: { review: review } %>
-  <% end %>
-</div>
 
 <div class="tabContent" id="all">
   <% @movie.all_reviews.each do |review| %>
     <%= render partial: "reviews/review_excerpt", locals: { review: review } %>
   <% end %>
 </div>
+
+<% if @movie.trusted_reviews.length > 0 %>
+  <div class="tabContent" id="trusted">
+    <% @movie.trusted_reviews.each do |review| %>
+      <%= render partial: "reviews/review_excerpt", locals: { review: review } %>
+    <% end %>
+  </div>
+ <% end %>
+
+<% if @movie.user_reviews.length > 0 %>
+  <div class="tabContent" id="user">
+    <% @movie.user_reviews.each do |review| %>
+      <%= render partial: "reviews/review_excerpt", locals: { review: review } %>
+    <% end %>
+  </div>
+<% end %>
+
+

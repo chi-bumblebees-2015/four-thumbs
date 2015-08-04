@@ -24,7 +24,7 @@
   border: 1px solid; border-bottom: none; padding: 0.3em; text-decoration: none;
 }
 
-#tabs li a:selected {
+a.selectedTab {
   font-weight: bold;
 }
 
