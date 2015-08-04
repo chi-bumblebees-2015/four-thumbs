@@ -21,17 +21,14 @@
 <body>
 
   <nav class="red darken-3" role="navigation">
-    <div class="nav-wrapper container">
-
-      <%= link_to image_tag('Thumb_Logo.png', :height => 62) %><a id="logo-container" href="#" class="brand-logo">Four Thumbs</a>
-      
-
+    <div class="nav-wrapper">
+     <%= link_to image_tag('Thumb_Logo.png', :height => 62) %><a id="logo-container" href="#" class="brand-logo">Four Thumbs</a>
       <ul class="right hide-on-med-and-down">
         <% if current_user %>
         <p>Welcome, <%= current_user.name %></p>
-          <li><a id="logout" href="/logout">Log out</a></li>
+        <li><a id="logout" href="/logout">Log out</a></li>
         <% else %>
-          <li><a id="new_user" href="/users/new">Create Account</a></li>
+          <li><%= link_to "Create Account", new_user_path(@user) %></a></li>
           <li><a id="login" href="/login">Log In</a></li>
         <% end %>
       </ul>
@@ -49,38 +46,19 @@
         </ul> 
       </div>
       </div>
+
       <div class="col s10">
       <%= yield %>
     </div>
   </div>
-
 </body>
   <footer class="page-footer orange">
     <div class="container">
       <div class="row">
-        <div class="col l6 s12">
+        <div class="col s12 offset-s10">
           <h5 class="white-text">FOUR THUMBS</h5>
           <p class="grey-text text-lighten-4">Mike really likes bikes and thumbs.</p>
-
-
         </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
         </div>
       </div>
     </div>
