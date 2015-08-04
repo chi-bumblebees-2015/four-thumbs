@@ -31,3 +31,6 @@
     <% end %>
   </div>
 <% end %>
+<% if current_user %>
+  <%= link_to "Add Your Review", new_movie_review_path(@movie) %>
+<% end %>
