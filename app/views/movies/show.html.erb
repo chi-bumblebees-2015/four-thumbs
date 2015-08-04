@@ -1,6 +1,9 @@
 <h1><%= @movie.name %></h1>
 <div>
-  <p>Rating: <%= @movie.movie_score %> thumbs up</p>
+  <p>Number of Thumbs:
+   <% @thumbs.times do %> 
+   <%= image_tag('Thumb_Logo.png', :height => 30) %>
+   <% end %></p>
 </div>
 <p><%= @movie.plot_summary %></p>
 

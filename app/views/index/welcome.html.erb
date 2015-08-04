@@ -1,4 +1,4 @@
-<h1>Four Thumbs</h1>
+
 <% @movies.each do |movie| %>
   <li><%= link_to movie.name, movie, id: "movie-#{movie.id}" %></li>
 <% end %>

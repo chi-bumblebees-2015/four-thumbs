@@ -33,4 +33,7 @@ class Movie < ActiveRecord::Base
     return (total.to_f/count.to_f).round
   end
 
+
+  
+
 end
