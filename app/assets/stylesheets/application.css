@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+
+#tabs {
+  list-style-type: none; margin: 30px 0 0 0; padding: 0 0 0.3em 0;
+}
+
+#tabs li {display: inline;}
+
+#tabs li a {
+  border: 1px solid; border-bottom: none; padding: 0.3em; text-decoration: none;
+}
+
+a.selectedTab {
+  font-weight: bold;
+}
+
+.tabContent {
+  border: 1px solid; padding: 0.5em;
+}
+
+.tabContent.hide {
+  display: none;
+}
+

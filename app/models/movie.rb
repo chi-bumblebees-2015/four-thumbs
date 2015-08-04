@@ -10,7 +10,7 @@ class Movie < ActiveRecord::Base
   end
 
   def all_reviews
-  	reviews.order(rating: :desc)
+  	reviews.joins(:user).order(rating: :desc)
   end
 
 
