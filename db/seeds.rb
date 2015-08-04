@@ -1,6 +1,6 @@
 #Helper Methods
 def generate_plot
-  heroes = ["A squadron of robots", "#{Faker::Name.name}, a #{Faker::Name.title} down-on-their-luck","The city of #{Faker::Address.city}","A loving couple","A tiny megacorp named #{Faker::Company.name}"].sample
+  heroes = ["A squadron of robots", "#{Faker::Name.name}, a #{Faker::Name.title} down-on-their-luck,","The city of #{Faker::Address.city}","A loving couple","A tiny megacorp named #{Faker::Company.name}"].sample
   must_do_this ="must "+["#{Faker::Hacker.verb} #{Faker::Hacker.adjective} #{Faker::Hacker.noun}", "#{Faker::Company.bs}", "determine the meaning of #{Faker::Company.catch_phrase}"].sample
   before_the_deadline = "before the evil #{Faker::Hacker.abbreviation} begin Project #{Faker::App.name}."
   heroes+" "+must_do_this+" "+before_the_deadline
