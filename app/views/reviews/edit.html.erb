@@ -12,8 +12,12 @@
     <%= f.text_area :content, value: @review.content %>
   </p>
   <p>
-    <% if @error %>
-      <%= p @error %>
+    <% if @review.errors.any? %>
+      <ul>
+        <% @review.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
     <% end %>
     <%= f.submit "Update Review" %>
   </p>
