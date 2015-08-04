@@ -1,8 +1,16 @@
-<h2><%= @review.title %> | <%= @review.movie.name %></h2>
-By: <h4><%= @review.user.name %></h4>
-Created at: <%= @review.created_at %>
+<h2><%= @review.title %> | <%= link_to @review.movie.name, @review.movie %></h2>
+<h4>By: <%= link_to @review.user.name, @review.user %></h4>
 
+<div>
+  <p>Rating: <%= @review.rating %> thumbs up</p>
+  <p><%= @review.content %></p>
+</div>
 
-<p><%= @review.rating %></p>
+<p>Created at: <%= @review.created_at %></p>
+<% if @review.updated_at != @review.created_at %>
+  <p>Updated at: <%= @review.updated_at %></p>
+<% end %>
 
-<p><%= @review.content %></p>
+<% if @review.user == current_user %>
+  <%= link_to "Edit your review", edit_movie_review_path(@review.movie, @review) %>
+<% end %>
