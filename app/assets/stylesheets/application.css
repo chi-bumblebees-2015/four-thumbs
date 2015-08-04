@@ -41,10 +41,7 @@ a.selectedTab {
 	font-size: 38pt;
 }
 
-#side-nav {
-	margin-left: 0;
-	height: 100%;
-	display: fixed;
-	width: 200;
-	background-color: #c62828;
+.mainbody {
+    height:100vh;
+    background-color: #c62828;
 }
