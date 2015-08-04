@@ -9,7 +9,7 @@
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
-   
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
@@ -23,12 +23,11 @@
   <nav class="red darken-3" role="navigation">
     <div class="nav-wrapper container">
 
-      <%= link_to image_tag('Thumb_Logo.png', :height => 62) %><a id="logo-container" href="#" class="brand-logo">Four Thumbs</a>
-      
+      <%= link_to image_tag('Thumb_Logo.png', :height => 62), "/" %><a id="logo-container" href="/" class="brand-logo">Four Thumbs</a>
 
       <ul class="right hide-on-med-and-down">
         <% if current_user %>
-        <p>Welcome, <%= current_user.name %></p>
+          <li><a href="/users/<%= current_user.id %>">Welcome, <%= current_user.name %></a></li>
           <li><a id="logout" href="/logout">Log out</a></li>
         <% else %>
           <li><a id="new_user" href="/users/new">Create Account</a></li>
@@ -46,7 +45,7 @@
           <li><a href="#!">Second Sidebar Link</a></li>
           <li><a href="#!">Second Sidebar Link</a></li>
           <li><a href="#!">Second Sidebar Link</a></li>
-        </ul> 
+        </ul>
       </div>
       </div>
       <div class="col s10">
