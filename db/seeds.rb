@@ -24,7 +24,7 @@ end
 
 #Actual Seeding
 30.times do
-  Movie.create(name: "#{Faker::App.name} (#{rand(1970..2015)} film)", aggregate_rating: rand(3..100), plot_summary: generate_plot)
+  Movie.create(name: "#{Faker::App.name} (#{rand(1970..2015)} film)", aggregate_rating: rand(3..100), plot_summary: generate_plot, poster: "#{Faker::Avatar.image}")
 end
 
 200.times do |number|
