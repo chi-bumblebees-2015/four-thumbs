@@ -42,6 +42,10 @@ a.selectedTab {
 }
 
 .mainbody {
-    height:100vh;
-    background-color: #c62828;
+  height:100vh;
+  background-color: #c62828;
+}
+
+.mainbody a{
+  color: #fff;
 }
