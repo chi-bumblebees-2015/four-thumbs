@@ -8,7 +8,7 @@ Created at: <%= @review.created_at %>
 <p><%= @review.content %></p>
 
 <h4>Comments</h4>
-<%= @comments.each do |comment| %>
+<% @comments.each do |comment| %>
   <p><%= comment.user.name%></p>
   <p><%= comment.content %></p>
 <%end%>
