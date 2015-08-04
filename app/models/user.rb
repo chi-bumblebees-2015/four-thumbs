@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
 
   def trusted_string
     if self.trusted
-      "Trusted Reviewer"
+      '<i class="material-icons" title="Trusted Reviewer">verified_user</i>'.html_safe
     else
       ""
     end
