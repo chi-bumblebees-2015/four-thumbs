@@ -1,0 +1,21 @@
+<%= form_for [@review.movie, @review] do |f| %>
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title, value: @review.title %>
+  </p>
+  <p>
+    <%= f.label :rating %>
+    <%= f.number_field :rating, value: @review.rating %>
+  </p>
+  <p>
+    <%= f.label :content %>
+    <%= f.text_area :content, value: @review.content %>
+  </p>
+  <p>
+    <% if @error %>
+      <%= p @error %>
+    <% end %>
+    <%= f.submit "Update Review" %>
+  </p>
+
+<% end %>
