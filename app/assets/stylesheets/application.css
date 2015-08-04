@@ -36,3 +36,15 @@ a.selectedTab {
   display: none;
 }
 
+.brand-logo {
+	font-family: 'Damion', cursive;
+	font-size: 38pt;
+}
+
+#side-nav {
+	margin-left: 0;
+	height: 100%;
+	display: fixed;
+	width: 200;
+	background-color: #c62828;
+}
