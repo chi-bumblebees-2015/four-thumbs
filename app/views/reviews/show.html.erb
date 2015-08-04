@@ -39,5 +39,5 @@
 <%if session[:user_id] %>
   <%= render partial: "comments/comments_form", locals: { review: @review, new_comment: @new_comment } %>
 <%else%>
-  <p>To comment, you need to login or register for an account.</p>
+  <p>To comment, you need to <a href="/login">login</a> or <a href="/users/new">register</a> for an account.</p>
 <%end%>

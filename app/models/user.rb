@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
 
   def trusted_string
     if self.trusted
-      "Trusted User"
+      "Trusted Reviewer"
     else
       ""
     end
