@@ -1,6 +1,14 @@
 <h2><%= @review.title %> | <%= link_to @review.movie.name, @review.movie %></h2>
 <h4>By: <%= link_to @review.user.name, @review.user %></h4>
 
+<% if current_user && (current_user.voted_for? @review) %>
+  <b>
+<% end %>
+<%= link_to like_review_path(@review), method: :put do %>
+  Like!<% end %>
+</b>
+<%= @review.get_upvotes.size %>
+
 <div>
   <p>Rating: <%= @review.rating %> thumbs up</p>
   <p><%= @review.content %></p>

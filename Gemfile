@@ -38,6 +38,9 @@ gem 'bcrypt', '~> 3.1.7'
 #Use Faker to generate seed data
 gem 'faker'
 
+#add votable
+gem 'acts_as_votable'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
