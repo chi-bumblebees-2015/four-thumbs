@@ -2,3 +2,7 @@
   <%= f.text_area :content %>
   <%= f.submit %>
 <%end%>
+
+<% if @error %>
+  <p><%= @error %></p>
+<%end%>
