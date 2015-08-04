@@ -2,15 +2,23 @@ class Movie < ActiveRecord::Base
   has_many :reviews
 
   def trusted_reviews
-  	reviews.joins(:user).where('users.trusted' => true).order(rating: :desc)
+  	reviews.joins(:user).where('users.trusted' => true).sort do |x,y|
+      y.get_upvotes.size <=> x.get_upvotes.size
+    end
   end
 
   def user_reviews
-  	reviews.joins(:user).where('users.trusted' => false).order(rating: :desc)
+  	reviews.joins(:user).where('users.trusted' => false).sort do |x,y|
+      y.get_upvotes.size <=> x.get_upvotes.size
+    end
   end
 
   def all_reviews
-  	reviews.joins(:user).order(rating: :desc)
+  	reviews.joins(:user).sort do |x,y|
+      x_addition = if x.user.trusted then 2 else 1 end
+      y_addition = if y.user.trusted then 2 else 1 end
+      y.get_upvotes.size*y_addition <=> x.get_upvotes.size*x_addition
+    end
   end
 
   def movie_score
