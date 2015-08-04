@@ -1,6 +1,10 @@
 class Movie < ActiveRecord::Base
   has_many :reviews
 
+  def self.alphabetic
+    self.all.sort{|x,y| x.name <=> y.name }
+  end
+
   def trusted_reviews
   	reviews.joins(:user).where('users.trusted' => true).sort do |x,y|
       y.get_upvotes.size <=> x.get_upvotes.size
@@ -21,7 +25,7 @@ class Movie < ActiveRecord::Base
     end
   end
 
-  def movie_score
+  def full_movie_score
     user_review_number_total = self.reviews.select{|review| !review.user.trusted }.map{|review| review.user.reviews.count * review.rating}.reduce(:+)
     user_review_number_count = self.reviews.select{|review| !review.user.trusted }.map{|review| review.user.reviews.count}.reduce(:+)
     trusted_review_number_total = self.reviews.select{|review| review.user.trusted }.map{|review| review.user.reviews.count * review.rating}.reduce(:+)
@@ -30,7 +34,11 @@ class Movie < ActiveRecord::Base
     trusted_multiplier = 2
     total = user_review_number_total + trusted_multiplier*trusted_review_number_total ||= 0
     count = user_review_number_count + trusted_multiplier*trusted_review_number_count ||= 1
-    return (total.to_f/count.to_f).round
+    return total.to_f/count.to_f
+  end
+
+  def movie_score
+    full_movie_score.round
   end
 
 end
