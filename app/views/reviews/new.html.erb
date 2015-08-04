@@ -1,3 +1,5 @@
+<h2><center><span class="title">Write a review</span></center></h2>
+
 <%= form_for [@movie, @review] do |f| %>
   <p>
     <%= f.label :title %>
@@ -8,8 +10,8 @@
     <%= f.number_field :rating %>
   </p>
   <p>
-    <%= f.label :content %>
-    <%= f.text_area :content %>
+    <%= f.label :Your_Review %>
+    <%= f.text_area :content, :class => "materialize-textarea" %>
   </p>
   <p>
     <% if @review.errors.any? %>
