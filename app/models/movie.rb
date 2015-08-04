@@ -20,14 +20,9 @@ class Movie < ActiveRecord::Base
     trusted_total = self.reviews.select{|review| review.user.trusted }.map{|review| review.rating}.reduce(:+)
 
     trusted_multiplier = 2
-    total = trusted_total*trusted_multiplier + user_total
-    count = trusted_count*trusted_multiplier + user_count
-    if count == 0
-      return 0
-    else
-      return (total.to_f/count.to_f).round
-    end
+    total = trusted_total*trusted_multiplier + user_total ||= 0
+    count = trusted_count*trusted_multiplier + user_count ||= 1
+    return (total.to_f/count.to_f).round
   end
-
 
 end
