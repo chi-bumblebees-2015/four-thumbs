@@ -1,45 +1,48 @@
 <h1><%= @movie.name %></h1>
 <div>
-  <img src='<%= @movie.poster %>' >
-  <p>Number of Thumbs:
+  <img class='poster' src='<%= @movie.poster %>' >
+  <p>
    <% @thumbs.times do %>
-   <%= image_tag('Thumb_Logo.png', :height => 30) %>
+   <%= image_tag('Thumb_Logo.png', :height => 50) %>
    <% end %></p>
 </div>
 <p><%= @movie.plot_summary %></p>
 
+<div id="tab-container">
+  <ul id="tabs">
+    <li><a href="#all">All Reviews</a></li>
+    <% if @movie.trusted_reviews.length > 0 %>
+      <li><a href="#trusted">Trusted Reviews</a></li>
+    <% end %>
+    <% if @movie.user_reviews.length > 0 %>
+      <li><a href="#user">User Reviews</a></li>
+    <% end %>
+  </ul>
 
-<ul id="tabs">
-  <li><a href="#all">All Reviews</a></li>
+  <div class="tabContent" id="all">
+    <% @movie.all_reviews.each do |review| %>
+      <%= render partial: "reviews/review_excerpt", locals: { review: review } %>
+    <% end %>
+  </div>
+
   <% if @movie.trusted_reviews.length > 0 %>
-    <li><a href="#trusted">Trusted Reviews</a></li>
-  <% end %>
-  <% if @movie.user_reviews.length > 0 %>
-    <li><a href="#user">User Reviews</a></li>
-  <% end %>
-</ul>
+    <div class="tabContent" id="trusted">
+      <% @movie.trusted_reviews.each do |review| %>
+        <%= render partial: "reviews/review_excerpt", locals: { review: review } %>
+      <% end %>
+    </div>
+   <% end %>
 
-<div class="tabContent" id="all">
-  <% @movie.all_reviews.each do |review| %>
-    <%= render partial: "reviews/review_excerpt", locals: { review: review } %>
+  <% if @movie.user_reviews.length > 0 %>
+    <div class="tabContent" id="user">
+      <% @movie.user_reviews.each do |review| %>
+        <%= render partial: "reviews/review_excerpt", locals: { review: review } %>
+      <% end %>
+    </div>
   <% end %>
 </div>
 
-<% if @movie.trusted_reviews.length > 0 %>
-  <div class="tabContent" id="trusted">
-    <% @movie.trusted_reviews.each do |review| %>
-      <%= render partial: "reviews/review_excerpt", locals: { review: review } %>
-    <% end %>
-  </div>
- <% end %>
 
-<% if @movie.user_reviews.length > 0 %>
-  <div class="tabContent" id="user">
-    <% @movie.user_reviews.each do |review| %>
-      <%= render partial: "reviews/review_excerpt", locals: { review: review } %>
-    <% end %>
-  </div>
-<% end %>
 <% if current_user %>
   <% if @movie.reviews.find_by(user: current_user) %>
     <%= link_to "Update Your Review", edit_movie_review_path(@movie, @movie.reviews.find_by(user: current_user)) %>
