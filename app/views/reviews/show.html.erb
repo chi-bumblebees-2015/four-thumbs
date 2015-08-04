@@ -12,3 +12,9 @@ Created at: <%= @review.created_at %>
   <p><%= comment.user.name%></p>
   <p><%= comment.content %></p>
 <%end%>
+
+<%if session[:user_id] %>
+  <%= render partial: "comments/comments_form", locals: { review: @review, new_comment: @new_comment } %>
+<%else%>
+  <p>To comment, you need to login or register for an account.</p>
+<%end%>
