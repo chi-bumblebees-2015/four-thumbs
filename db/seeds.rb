@@ -6,6 +6,10 @@ def generate_plot
   heroes+" "+must_do_this+" "+before_the_deadline
 end
 
+def random_review_title
+  ['A Year of Walking', 'Candy For Two', 'Walking and Running', 'The Frog Catchers Field Manual', 'Tomato in the Window', 'A Dozen Heros', 'Finding a New Sun', 'Stop Asking, Just Do', 'What Lives on Pluto', 'Fishing With Chips', 'No Lonely Stars', 'Free Parking', 'Next Day Previous Night', 'Burning Water', 'Slicker Than Rain', 'Future Discretions', 'Covered and Warm', 'The Odd Sister', 'Falling Flags', 'Keyboard For Hire', 'Ready, Set, Die', 'Same Way Through', 'The Zookeeper and Her Tiger'].sample
+end
+
 def random_movie
   Movie.all.sample
 end
@@ -28,7 +32,7 @@ end
 end
 
 400.times do
-  Review.create(user: random_user, movie: random_movie, content: "#{Faker::Lorem.paragraph(2, true, 4)}", title: "#{Faker::App.name}", rating: rand(0..4) )
+  Review.create(user: random_user, movie: random_movie, content: "#{Faker::Lorem.paragraph(2, true, 4)}", title: random_review_title, rating: rand(0..4) )
 end
 
 500.times do
