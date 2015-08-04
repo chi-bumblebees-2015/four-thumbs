@@ -41,4 +41,7 @@ class Movie < ActiveRecord::Base
     full_movie_score.round
   end
 
+
+  
+
 end
