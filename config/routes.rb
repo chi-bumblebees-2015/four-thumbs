@@ -30,6 +30,11 @@ end
   get '/logout' => 'sessions#destroy'
 
 
+  resources :reviews do
+    member do
+      put 'like', to: 'reviews#upvote'
+    end
+  end
 
 
   # Example resource route with options:
