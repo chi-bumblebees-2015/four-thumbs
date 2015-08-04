@@ -28,7 +28,7 @@ end
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
-
+  get '/all' => 'index#alphabetical'
 
   resources :reviews do
     member do

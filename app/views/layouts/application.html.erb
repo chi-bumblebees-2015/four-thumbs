@@ -25,7 +25,7 @@
       <%= link_to image_tag('Thumb_Logo.png', :height => 62), "/" %><a id="logo-container" href="/" class="brand-logo">Four Thumbs</a>
 
       <ul class="right hide-on-med-and-down">
-      <li><a id="login" href="#">All Movies</a></li>
+      <li><a id="login" href="/all">All Movies</a></li>
         <% if current_user %>
           <li><a href="/users/<%= current_user.id %>">Welcome, <%= current_user.name %></a></li>
           <li><a id="logout" href="/logout">Log out</a></li>

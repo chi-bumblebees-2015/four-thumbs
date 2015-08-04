@@ -7,5 +7,9 @@ class IndexController < ApplicationController
     end
   end
 
+  def alphabetical
+    @movies = Movie.alphabetic
+  end
+
 
 end
