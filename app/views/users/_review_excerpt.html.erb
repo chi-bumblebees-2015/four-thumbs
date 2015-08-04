@@ -1,0 +1,4 @@
+<h3><%= link_to(review.movie.name, review.movie) %>: <%= link_to(review.title, movie_review_path(review.movie, review)) %> - <%= review.rating %>/4 thumbs up</h3>
+<p><%= review.get_upvotes.size %> Likes</p>
+
+<%= truncate(sanitize(review.content), length: 150, omission: "...")%> - <%= link_to("Read More", movie_review_path(review.movie, review) )%>

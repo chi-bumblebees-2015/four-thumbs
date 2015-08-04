@@ -32,5 +32,9 @@
   </div>
 <% end %>
 <% if current_user %>
-  <%= link_to "Add Your Review", new_movie_review_path(@movie) %>
+  <% if @movie.reviews.find_by(user: current_user) %>
+    <%= link_to "Update Your Review", edit_movie_review_path(@movie, @movie.reviews.find_by(user: current_user)) %>
+  <% else %>
+    <%= link_to "Add Your Review", new_movie_review_path(@movie) %>
+  <% end %>
 <% end %>

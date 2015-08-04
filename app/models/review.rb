@@ -6,5 +6,7 @@ class Review < ActiveRecord::Base
   has_many :comments
   acts_as_votable
 
+  validates :user, uniqueness: { scope: :movie, message: "cannot review a movie more than once"}
+
 
 end

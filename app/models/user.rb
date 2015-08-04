@@ -15,4 +15,11 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(self.password_digest) == password
   end
 
+  def trusted_string
+    if self.trusted
+      "Trusted User"
+    else
+      ""
+    end
+  end
 end
