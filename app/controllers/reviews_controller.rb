@@ -46,9 +46,10 @@ class ReviewsController < ApplicationController
 
 
 	def update
+    @review = Review.find(params[:id])
     if current_user == @review.user
   		if @review.update(review_params)
-  			redirect_to @review
+  			redirect_to [@review.movie, @review]
   		else
   			render "edit"
   		end
