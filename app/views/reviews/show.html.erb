@@ -21,13 +21,17 @@
   <% end %>
 </p>
 
-
+<p><%= @review.content %></p>
 
 <p>Posted: <%= @review.created_at %>
   <% if @review.updated_at != @review.created_at %>
-    <em> | Edited</em>
+    <!-- |<em> Edited</em> -->
   <% end %>
 </p>
+
+<% if current_user %>
+  <a href="/reviews/<%= @review.id %>/flag">Flag Review</a>
+<% end %>
 
 <% if @review.user == current_user %>
   <%= link_to "Edit your review", edit_movie_review_path(@review.movie, @review) %>
@@ -43,6 +47,9 @@
         <% end %>
       </p>
       <p><%= comment.content %></p>
+      <% if current_user %>
+        <a href="/comments/<%= comment.id %>/flag">Flag Comment</a>
+      <% end %>
     </div>
   <%end%>
 

@@ -17,6 +17,23 @@ class CommentsController < ApplicationController
     end
   end
 
+  def flag
+    @comment = Comment.find(params[:id])
+    @review = @comment.review
+    if current_user
+      @comment.update(flagged: true)
+    end
+    redirect_to @review
+  end
+
+  def hide
+    @comment = Comment.find(params[:id])
+    if current_user.admin == true
+      @comment.update(hidden: true, flagged: false)
+    end
+    redirect_to "/"
+  end
+
   private
   def comment_params
     params.require(:comment).permit(:content)
