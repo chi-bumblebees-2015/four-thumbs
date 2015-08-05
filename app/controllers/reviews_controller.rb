@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
 	def show
 		@review = Review.find(params[:id])
 		@movie = @review.movie
-    @comments = @review.comments
+    @comments = @review.unhidden_comments
     @new_comment = Comment.new
 	end
 
@@ -18,7 +18,6 @@ class ReviewsController < ApplicationController
       redirect_to '/login'
     end
 	end
-
 
 	def create
 		if current_user
@@ -35,8 +34,6 @@ class ReviewsController < ApplicationController
       redirect_to '/login'
     end
 	end
-
-
 
 	def edit
     @review = Review.find(params[:id])
@@ -69,6 +66,21 @@ class ReviewsController < ApplicationController
     redirect_to :back
   end
 
+  def flag
+    @review = Review.find(params[:id])
+    if current_user
+      @review.update(flagged: true)
+    end
+    redirect_to @review
+  end
+
+  def hide
+    @review = Review.find(params[:id])
+    if current_user.admin == true
+      @review.update(hidden: true, flagged: false)
+    end
+    redirect_to "/"
+  end
 
 
 	private

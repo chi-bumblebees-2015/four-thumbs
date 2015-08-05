@@ -2,7 +2,6 @@
     <%= image_tag('Thumb_Logo.png', :height => 30) %>
     <% end %>
 </h3>
-<h4><%= link_to(review.user.name, user_path(review.user) ) %> <%= review.user.trusted_string %></h3>
 <p><%= review.get_upvotes.size %> Likes</p>
 
 <%= truncate(sanitize(review.content), length: 150, omission: "...")%> - <%= link_to("Read More", movie_review_path(review.movie, review) )%>

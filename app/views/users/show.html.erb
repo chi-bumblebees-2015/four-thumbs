@@ -1,4 +1,4 @@
-<h1><%= @user.name %> <%= @user.trusted_string %></h1>
+<h1 class="title"><%= @user.name %> <%= @user.trusted_string %></h1>
 <% @user.reviews.each do |review| %>
   <%= render partial: "review_excerpt", locals: { review: review } %>
 <% end %>
