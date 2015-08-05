@@ -114,4 +114,8 @@ footer {
   margin-top: -200px; /* negative value of footer height */
   height: 230px;
   clear:both;
-} 
+}
+
+#nested_comment {
+  border: 1px solid #afafaf;
+}

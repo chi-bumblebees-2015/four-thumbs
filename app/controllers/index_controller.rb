@@ -19,6 +19,7 @@ class IndexController < ApplicationController
     if current_user.admin == true
       @comments = Comment.all_flagged
       @reviews = Review.all_flagged
+      @nested_comments = NestedComment.all_flagged
     else
       redirect_to '/'
     end

@@ -43,6 +43,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :nested_comments do
+    member do
+      put 'flag', to: 'nested_comments#flag'
+      put 'clear-flag', to: 'nested_comments#clear_flag'
+      put 'hide', to: 'nested_comments#hide'
+    end
+  end
+
   resources :reviews do
     member do
       put 'like', to: 'reviews#upvote'

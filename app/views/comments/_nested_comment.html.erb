@@ -1,3 +1,4 @@
+<div id="nested_comment">
 <%= comment.user.name%> <strong><%= comment.user.trusted_string %></strong>
   <% if comment.user == @review.user %>
     | <strong>Original Reviewer</strong>
@@ -5,5 +6,12 @@
 </p>
 <p><%= comment.content %></p>
 <% if current_user %>
-  <a href="/comments/<%= comment.id %>/flag">Flag Comment</a>
+  <%= link_to flag_nested_comment_path(comment), method: :put do %>
+    <% if (current_user.disliked? comment) %>
+      Unflag Comment
+    <% else %>
+      Flag Comment
+    <% end %>
+  <% end %>
 <% end %>
+</div>

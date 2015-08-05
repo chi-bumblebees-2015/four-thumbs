@@ -7,3 +7,20 @@
 <% @comments.each do |comment| %>
   <%= render partial: "flagged_comment", locals: { comment: comment } %>
 <% end %>
+
+<h1>Flagged Nested Comments</h1>
+<% @nested_comments.each do |comment| %>
+<div class="comment">
+  <%= link_to "View in context", comment.comment.review %>
+  <p class="commenter"><%= comment.user.name%> <strong><%= comment.user.trusted_string %></strong>
+  </p>
+  <p><%= comment.content %></p>
+  <%= link_to hide_nested_comment_path(comment), method: :put do %>
+    Hide Comment
+  <% end %>
+  |
+  <%= link_to clear_flag_nested_comment_path(comment), method: :put do %>
+    Unflag Comment
+  <% end %>
+</div>
+<%end%>
