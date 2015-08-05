@@ -1,4 +1,4 @@
-<h2><%= @review.title %> | <%= link_to @review.movie.name, @review.movie %></h2>
+<h2><%= link_to @review.movie.name, @review.movie %> | <%= @review.title %></h2>
 <h4>By: <%= link_to @review.user.name, @review.user %> <%= @review.user.trusted_string %></h4>
 
 <div>
