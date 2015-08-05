@@ -22,7 +22,7 @@ end
 feature 'User can create new account' do
   scenario "user can click to create account" do
     visit '/'
-    find("#new_user:first-child").click
+    find("#new_user").click
     expect(page).to have_content("Username:")
     expect(page).to have_content("Email:")
     expect(page).to have_content("Password:")
