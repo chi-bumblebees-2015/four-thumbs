@@ -6,18 +6,22 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
-    @thumbs = @movie.movie_score
+    if @movie.reviews.count > 0
+      @thumbs = @movie.movie_score
+    else
+      @thumbs = 0
+    end
   end
 
   def new
     @movie = Movie.new
-    if !current_user
+    if !current_user || !current_user.admin
       redirect_to '/login'
     end
   end
 
   def create
-    if current_user
+    if current_user && current_user.admin
       @movie = Movie.new(movie_params)
       @movie.poster = Faker::Avatar.image(new_movie_name)
       if @movie.save

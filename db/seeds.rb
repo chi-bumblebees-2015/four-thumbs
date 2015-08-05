@@ -38,3 +38,5 @@ end
 500.times do
   Comment.create(user: random_user, review: random_review, content: "#{Faker::Lorem.sentence(1, true)}")
 end
+
+User.create(name: "admin", email:"admin", trusted: true, admin: true, password:"test")
