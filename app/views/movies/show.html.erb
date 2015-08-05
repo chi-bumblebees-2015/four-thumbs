@@ -14,10 +14,10 @@
       <ul class="tabs">
         <li class="tab col s2"><a class="active" href="#all">All Reviews</a></li>
         <% if @movie.trusted_reviews.length > 0 %>
-          <li class="tab col s2"><a href="#trusted">Trusted Reviews</a></li>
+          <li class="tab col s2" id="trusted"><a href="#trusted">Trusted Reviews</a></li>
         <% end %>
         <% if @movie.user_reviews.length > 0 %>
-          <li class="tab col s2"><a href="#user">User Reviews</a></li>
+          <li class="tab col s2" id="user_tab"><a href="#user">User Reviews</a></li>
         <% end %>
       </ul>
     </div>
