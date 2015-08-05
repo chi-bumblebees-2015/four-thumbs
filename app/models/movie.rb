@@ -6,7 +6,7 @@ class Movie < ActiveRecord::Base
   end
 
   def self.rank_movies
-    self.all.sort{|x,y| y.full_movie_score <=> x.full_movie_score }[0..9]
+    self.all.select{|movie| movie.reviews.count > 0}.sort{|x,y| y.full_movie_score <=> x.full_movie_score }[0..9]
   end
 
   def unhidden_reviews
