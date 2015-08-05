@@ -4,7 +4,7 @@
   <% if @movie.reviews.find_by(user: current_user) %>
     <h4 class="edit"><%= link_to "Update Your Review", edit_movie_review_path(@movie, @movie.reviews.find_by(user: current_user)) %></h4>
   <% else %>
-    <h4 class="edit"><%= link_to "Add Your Review", new_movie_review_path(@movie) %></h4>
+    <h4 class="edit"><%= link_to "Add Your Review", new_movie_review_path(@movie), :id => "add-review" %></h4>
   <% end %>
 <% end %>
 
