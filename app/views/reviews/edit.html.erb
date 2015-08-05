@@ -8,8 +8,9 @@
     <%= f.number_field :rating, value: @review.rating %>
   </p>
   <p>
-    <%= f.label :content %>
-    <%= f.text_area :content, value: @review.content %>
+    <i class="material-icons">create</i>
+    <%= f.label :Your_Review %>
+    <%= f.text_area :content, value: @review.content, :class => "materialize-textarea" %>
   </p>
   <p>
     <% if @review.errors.any? %>

@@ -29,8 +29,6 @@
   border-bottom: none;
   padding: 0.5em;
   text-decoration: none;
-  border-radius: 10px 10px 0 0;
-
 }
 
 #tab-container {
@@ -46,8 +44,7 @@ a.selectedTab {
 .tabContent {
   border: 1px solid #afafaf;
   padding: 0.5em;
-  border-radius: 0 10px 10px 10px;
-  box-sizing: border-box;
+  border-radius: 10px;
 }
 
 .tabContent.hide {
@@ -89,4 +86,9 @@ a.selectedTab {
 
 #logo{
   margin-left: 10px;
+}
+
+.title {
+	font-family: 'Damion', cursive;
+  text-align: center;
 }

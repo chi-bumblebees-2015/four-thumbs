@@ -1,8 +1,11 @@
 <h1>Sign Up</h1>
 
 <%= form_for :user, url: '/users' do |f| %>
+  <i class="material-icons">perm_identity</i>
   Username: <%= f.text_field :name %>
+  <i class="material-icons">email</i>
   Email: <%= f.text_field :email %>
+  <i class="material-icons">vpn_key</i>
   Password: <%= f.password_field :password %>
   Password Confirmation: <%= f.password_field :password_confirmation %>
   <%= f.submit "Submit" %>

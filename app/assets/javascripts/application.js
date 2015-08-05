@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require_tree
 $(document).ready(function() {
-  $('ul#tabs').each(function() {
+  $('ul .tabs').each(function() {
     var $active, $content, $links = $(this).find('a');
 
     $active = $($links.filter('[href="' +location.hash+'"]')[0] || $links[0]);
