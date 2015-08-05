@@ -1,0 +1,4 @@
+<h2 class="title">Recent Reviews</h2>
+<ol><% @recent_reviews.each do |review| %>
+  <li><%= link_to review.title, review %></li>
+<% end %></ol>

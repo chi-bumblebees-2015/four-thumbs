@@ -17,25 +17,19 @@
       <!--   Icon Section   -->
       <div class="row">
         <div class="col s6">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
-            <h2 class="center">Popular Movies</h2>
 
+            <h2 class="title">Popular Movies</h2>
+            <ul><div class="popular-list">
             <% @popular_movies.each do |movie| %>
               <li><%= link_to movie.name, movie, id: "movie-#{movie.id}" %></li>
-            <% end %></p>
+            <% end %></div></ul></p>
           </div>
-        </div>
-
+        <div class="col s1"></div>
         <div class="col s6">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-            <h2 class="center">Popular Reviews</h2>
-              <% @popular_reviews.each do |review| %>
+            <h2 class="title">Recent Reviews</h2>
+             <ul><div class="popular-list"><% @recent_reviews.each do |review| %>
               <li><%= link_to review.title, review %></li>
-              <% end %></p>
-
-          </div>
+              <% end %></div></ul></p>
         </div>
        </div>
 </div>
