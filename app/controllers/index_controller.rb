@@ -9,5 +9,13 @@ class IndexController < ApplicationController
     end
   end
 
+  def admin
+    if current_user.admin == true
+      @comments = Comment.all_flagged
+      @reviews = Review.all_flagged
+    else
+      redirect_to '/'
+    end
+  end
 
 end
