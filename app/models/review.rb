@@ -14,7 +14,9 @@ class Review < ActiveRecord::Base
   end
 
   def self.all_flagged
-    Review.where(flagged: true)
+    Review.where(flagged: true).sort_by do |comment|
+      comment.get_dislikes.size
+    end.reverse
   end
 
   def self.best_reviews
