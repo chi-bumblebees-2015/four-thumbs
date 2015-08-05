@@ -1,4 +1,8 @@
-<h3><%= link_to(review.title, movie_review_path(review.movie, review)) %> - <%= review.rating %> thumbs up</h3>
+<h3><%= link_to(review.title, movie_review_path(review.movie, review)) %>
+    <% review.movie.movie_score.times do %>
+    <%= image_tag('Thumb_Logo.png', :height => 30) %>
+    <% end %>
+</h3>
 <h4><%= link_to(review.user.name, user_path(review.user) ) %> <%= review.user.trusted_string %></h4>
 <p><%= review.get_upvotes.size %> Likes</p>
 

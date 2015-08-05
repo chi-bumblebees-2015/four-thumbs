@@ -1,12 +1,13 @@
 <h1><%= @movie.name %></h1>
 <div>
-  <img src='<%= @movie.poster %>' >
-  <p>Number of Thumbs:
+  <img class='poster' src='<%= @movie.poster %>' >
+  <p>
    <% @thumbs.times do %>
-   <%= image_tag('Thumb_Logo.png', :height => 30) %>
+   <%= image_tag('Thumb_Logo.png', :height => 50) %>
    <% end %></p>
 </div>
 <p><%= @movie.plot_summary %></p>
+
 
  <div class="row">
     <div class="col s12">
@@ -35,13 +36,6 @@
   <% end %>
 </div>
 
-<% if @movie.trusted_reviews.length > 0 %>
-  <div class="tabContent" id="trusted">
-    <% @movie.trusted_reviews.each do |review| %>
-      <%= render partial: "reviews/review_excerpt", locals: { review: review } %>
-    <% end %>
-  </div>
- <% end %>
 
 <% if @movie.user_reviews.length > 0 %>
   <div class="tabContent" id="user">
