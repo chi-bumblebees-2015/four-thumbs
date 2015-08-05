@@ -43,7 +43,7 @@ class CommentsController < ApplicationController
     if current_user.admin == true
       @comment.update(hidden: true, flagged: false)
     end
-    redirect_to "/"
+    redirect_to :back
   end
 
   private

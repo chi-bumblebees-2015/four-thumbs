@@ -1,4 +1,5 @@
 <div class="comment">
+  <%= link_to "View in context", comment.review %>
   <p class="commenter"><%= comment.user.name%> <strong><%= comment.user.trusted_string %></strong>
   </p>
   <p><%= comment.content %></p>
