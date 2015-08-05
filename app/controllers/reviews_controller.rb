@@ -58,7 +58,7 @@ class ReviewsController < ApplicationController
 
   def upvote
     @review = Review.find(params[:id])
-    if current_user && (current_user.voted_for? @review)
+    if current_user && (current_user.liked? @review)
       @review.unliked_by current_user
     elsif current_user
       @review.liked_by current_user
@@ -69,9 +69,22 @@ class ReviewsController < ApplicationController
   def flag
     @review = Review.find(params[:id])
     if current_user
-      @review.update(flagged: true)
+      if current_user.disliked? @review
+        @review.undisliked_by current_user
+      else
+        @review.disliked_by current_user
+        @review.update(flagged: true)
+      end
     end
-    redirect_to @review
+    redirect_to :back
+  end
+
+  def clear_flag
+    @review = Review.find(params[:id])
+    if current_user.admin == true
+      @review.update(flagged: false)
+    end
+    redirect_to :back
   end
 
   def hide
@@ -79,7 +92,7 @@ class ReviewsController < ApplicationController
     if current_user.admin == true
       @review.update(hidden: true, flagged: false)
     end
-    redirect_to "/"
+    redirect_to :back
   end
 
 

@@ -1,1 +1,9 @@
-<!-- Render all flagged reviews and comments -->
+<h1>Flagged Reviews</h1>
+<% @reviews.each do |review| %>
+  <%= render partial: "flagged_review_excerpt", locals: { review: review } %>
+<% end %>
+
+<h1>Flagged Comments</h1>
+<% @comments.each do |comment| %>
+  <%= render partial: "flagged_comment", locals: { comment: comment } %>
+<% end %>

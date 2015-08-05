@@ -37,16 +37,18 @@ Rails.application.routes.draw do
 
   resources :comments do
     member do
-      get 'flag', to: 'comments#flag'
-      get 'hide', to: 'comments#hide'
+      put 'flag', to: 'comments#flag'
+      put 'clear-flag', to: 'comments#clear_flag'
+      put 'hide', to: 'comments#hide'
     end
   end
 
   resources :reviews do
     member do
       put 'like', to: 'reviews#upvote'
-      get 'flag', to: 'reviews#flag'
-      get 'hide', to: 'reviews#hide'
+      put 'flag', to: 'reviews#flag'
+      put 'clear-flag', to: 'reviews#clear_flag'
+      put 'hide', to: 'reviews#hide'
     end
   end
 

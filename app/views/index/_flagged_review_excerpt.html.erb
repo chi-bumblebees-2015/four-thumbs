@@ -1,0 +1,17 @@
+<h3><%= link_to(review.title, movie_review_path(review.movie, review)) %>
+    <% review.rating.times do %>
+    <%= image_tag('Thumb_Logo.png', :height => 30) %>
+    <% end %>
+</h3>
+<h4><%= link_to(review.user.name, user_path(review.user) ) %> <%= review.user.trusted_string %></h4>
+<%= link_to hide_review_path(review), method: :put do %>
+  Hide Review
+<% end %>
+|
+<%= link_to clear_flag_review_path(review), method: :put do %>
+  Unflag Review
+<% end %>
+<p><%= review.get_downvotes.size %> Flags</p>
+<p><%= review.get_upvotes.size %> Likes</p>
+
+<%= truncate(sanitize(review.content), length: 150, omission: "...")%> - <%= link_to("Read More", movie_review_path(review.movie, review) )%>
