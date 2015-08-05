@@ -1,3 +1,4 @@
-<% @popular_reviews.each do |review| %>
+<h2 class="title">Popular Reviews</h2>
+<ol><% @popular_reviews.each do |review| %>
   <li><%= link_to review.title, review %></li>
-<% end %>
+<% end %></ol>
