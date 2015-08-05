@@ -3,7 +3,7 @@ class IndexController < ApplicationController
   def welcome
     @movies = Movie.all
     @popular_movies = Movie.rank_movies
-    @popular_reviews = Review.best_reviews
+    @recent_reviews = Review.recent_reviews
     @feature_movie = @movies.sample
     @thumbs = @feature_movie.movie_score
     if session[:user_id]
@@ -30,6 +30,10 @@ class IndexController < ApplicationController
 
   def popular_reviews
     @popular_reviews = Review.best_reviews
+  end
+
+  def recent_reviews
+    @recent_reviews = Review.recent_reviews
   end
 
 end

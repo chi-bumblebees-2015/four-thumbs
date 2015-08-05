@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get '/all' => 'index#alphabetical'
   get '/popular_movies' => 'index#popular_movies'
   get '/popular_reviews' => 'index#popular_reviews'
+  get '/recent_reviews' => 'index#recent_reviews'
 
 
   resources :comments do
