@@ -15,6 +15,7 @@ class MoviesController < ApplicationController
   def create
     if current_user
       @movie = Movie.new(movie_params)
+      @movie.poster = Faker::Avatar.image(new_movie_name)
       if @movie.save
         redirect_to @movie
       else
@@ -32,5 +33,8 @@ class MoviesController < ApplicationController
     params.require(:movie).permit(:name, :plot_summary)
   end
 
+  def new_movie_name
+    movie_params[:name]
+  end
 
 end
