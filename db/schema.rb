@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805001901) do
+ActiveRecord::Schema.define(version: 20150805160849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 20150805001901) do
     t.string   "poster"
   end
 
+  create_table "nested_comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "comment_id"
+    t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "nested_comments", ["comment_id"], name: "index_nested_comments_on_comment_id", using: :btree
+  add_index "nested_comments", ["user_id"], name: "index_nested_comments_on_user_id", using: :btree
+
   create_table "reviews", force: :cascade do |t|
     t.text     "content"
     t.string   "title"
@@ -58,7 +69,7 @@ ActiveRecord::Schema.define(version: 20150805001901) do
     t.string   "password_digest",                 null: false
     t.string   "email",                           null: false
     t.boolean  "trusted",         default: false
-    t.boolean  "admin",           default: false
+    t.boolean  "admin"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
@@ -80,6 +91,8 @@ ActiveRecord::Schema.define(version: 20150805001901) do
 
   add_foreign_key "comments", "reviews"
   add_foreign_key "comments", "users"
+  add_foreign_key "nested_comments", "comments"
+  add_foreign_key "nested_comments", "users"
   add_foreign_key "reviews", "movies"
   add_foreign_key "reviews", "users"
 end

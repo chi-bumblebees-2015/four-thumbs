@@ -22,6 +22,10 @@ def random_review
   Review.all.sample
 end
 
+def random_comment
+  Comment.all.sample
+end
+
 #Actual Seeding
 30.times do
   Movie.create(name: "#{Faker::App.name} (#{rand(1970..2015)} film)", aggregate_rating: rand(3..100), plot_summary: generate_plot, poster: "#{Faker::Avatar.image}")
@@ -37,4 +41,8 @@ end
 
 500.times do
   Comment.create(user: random_user, review: random_review, content: "#{Faker::Lorem.sentence(1, true)}")
+end
+
+500.times do
+  Nested_Comment(user: random_user, comment: random_comment, content: "#{Faker::Lorem.sentence(1, true)}")
 end
