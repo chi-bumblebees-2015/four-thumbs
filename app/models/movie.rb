@@ -22,6 +22,7 @@ class Movie < ActiveRecord::Base
   end
 
   def movie_score
+    return 0 if self.reviews.empty?
     user_review_number_total = self.reviews.select{|review| !review.user.trusted }.map{|review| review.user.reviews.count * review.rating}.reduce(:+)
     user_review_number_count = self.reviews.select{|review| !review.user.trusted }.map{|review| review.user.reviews.count}.reduce(:+)
     trusted_review_number_total = self.reviews.select{|review| review.user.trusted }.map{|review| review.user.reviews.count * review.rating}.reduce(:+)
@@ -34,6 +35,6 @@ class Movie < ActiveRecord::Base
   end
 
 
-  
+
 
 end
