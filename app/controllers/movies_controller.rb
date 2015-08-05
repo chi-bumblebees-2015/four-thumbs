@@ -35,6 +35,26 @@ class MoviesController < ApplicationController
     end
   end
 
+  def edit
+    @movie = Movie.find(params[:id])
+    if !current_user || !current_user.admin
+      redirect_to @movie
+    end
+  end
+
+  def update
+    @movie = Movie.find(params[:id])
+    if current_user.admin
+      if @movie.update(movie_params)
+        redirect_to @movie
+      else
+        render "edit"
+      end
+    else
+      redirect_to @movie
+    end
+  end
+
   private
 
   def movie_params
