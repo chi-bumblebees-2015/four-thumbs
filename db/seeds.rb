@@ -44,5 +44,5 @@ end
 end
 
 500.times do
-  Nested_Comment(user: random_user, comment: random_comment, content: "#{Faker::Lorem.sentence(1, true)}")
+  Nested_Comment.create(user: random_user, comment: random_comment, content: "#{Faker::Lorem.sentence(1, true)}")
 end

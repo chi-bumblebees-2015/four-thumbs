@@ -8,7 +8,8 @@
   <a href="/comments/<%= comment.id %>/flag">Flag Comment</a>
 <% end %>
 <% if comment.nested_comments.length > 0 %>
-  <%comment.nested_comments each do |nested_comment| %>
+<%= comment.nested_comments %>
+  <%comment.nested_comments.each do |nested_comment| %>
     <%= render partial: "comments/nested_comment", locals: { comment: nested_comment } %>
   <%end%>
 <%end%>
