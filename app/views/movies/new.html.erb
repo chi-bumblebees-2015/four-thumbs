@@ -1,0 +1,15 @@
+<%= form_for [@movie] do |f| %>
+<p>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</p>
+<p>
+  <%= f.label :plot_summary %>
+  <%= f.text_area :plot_summary %>
+  <%= f.submit %>
+</p>
+<%end%>
+
+<% if @error %>
+  <p><%= @error %></p>
+<%end%>
