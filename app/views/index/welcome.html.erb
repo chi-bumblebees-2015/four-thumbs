@@ -1,6 +1,6 @@
 
 
- 
+
 <div class="row">
 <h1><%= link_to @feature_movie.name, @feature_movie, id: "movie-#{@feature_movie.id}" %></h1>
 <div>
@@ -21,7 +21,9 @@
             <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
             <h2 class="center">Popular Movies</h2>
 
-            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+            <% @popular_movies.each do |movie| %>
+              <li><%= link_to movie.name, movie, id: "movie-#{movie.id}" %></li>
+            <% end %></p>
           </div>
         </div>
 
@@ -29,10 +31,12 @@
           <div class="icon-block">
             <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
             <h2 class="center">Popular Reviews</h2>
+              <% @popular_reviews.each do |review| %>
+              <li><%= link_to review.title, review %></li>
+              <% end %></p>
 
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
           </div>
         </div>
-       </div>    
+       </div>
 </div>
     <br><br>
