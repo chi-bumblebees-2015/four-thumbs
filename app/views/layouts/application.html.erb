@@ -19,7 +19,7 @@
 
 
 <body>
-
+<div id="wrap">
   <nav class="red darken-3" role="navigation">
     <div class="nav-wrapper">
       <%= link_to image_tag('Thumb_Logo.png', :height => 62, id: 'logo'), "/" %><a id="logo-container" href="/" class="brand-logo">Four Thumbs</a>
@@ -48,8 +48,8 @@
       <%= yield %>
     </div>
   </div>
-</body>
-  <footer class="page-footer orange">
+</div>
+<footer class="page-footer orange">
     <div class="container">
       <div class="row">
         <div class="col s2 offset-s10">
@@ -65,4 +65,5 @@
       </div>
     </div>
   </footer>
+</body>
 </html>
