@@ -35,7 +35,13 @@
     <%= render partial: "reviews/review_excerpt", locals: { review: review } %>
   <% end %>
 </div>
-
+<% if @movie.trusted_reviews.length > 0 %>
+  <div class="tabContent" id="trusted">
+    <% @movie.trusted_reviews.each do |review| %>
+      <%= render partial: "reviews/review_excerpt", locals: { review: review } %>
+    <% end %>
+  </div>
+<% end %> s
 
 <% if @movie.user_reviews.length > 0 %>
   <div class="tabContent" id="user">
