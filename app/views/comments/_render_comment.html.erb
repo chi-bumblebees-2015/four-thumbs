@@ -1,0 +1,23 @@
+<div class="comment">
+  <p class="commenter"><%= comment.user.name%> <strong><%= comment.user.trusted_string %></strong>
+    <% if comment.user == comment.review.user %>
+      | <strong>Original Reviewer</strong>
+    <% end %>
+  </p>
+  <p><%= comment.content %></p>
+  <% if current_user %>
+    <%= link_to flag_comment_path(comment), method: :put do %>
+      <% if (current_user.disliked? comment) %>
+        Unflag Comment
+      <% else %>
+        Flag Comment
+      <% end %>
+    <% end %>
+  <% end %>
+  <% if comment.nested_comments.length > 0 %>
+  <%= comment.nested_comments %>
+    <%comment.nested_comments.each do |nested_comment| %>
+      <%= render partial: "comments/nested_comment", locals: { comment: nested_comment } %>
+    <%end%>
+  <%end%>
+</div>

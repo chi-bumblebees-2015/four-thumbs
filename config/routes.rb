@@ -32,20 +32,23 @@ Rails.application.routes.draw do
   get '/all' => 'index#alphabetical'
   get '/popular_movies' => 'index#popular_movies'
   get '/popular_reviews' => 'index#popular_reviews'
+  get '/recent_reviews' => 'index#recent_reviews'
 
 
   resources :comments do
     member do
-      get 'flag', to: 'comments#flag'
-      get 'hide', to: 'comments#hide'
+      put 'flag', to: 'comments#flag'
+      put 'clear-flag', to: 'comments#clear_flag'
+      put 'hide', to: 'comments#hide'
     end
   end
 
   resources :reviews do
     member do
       put 'like', to: 'reviews#upvote'
-      get 'flag', to: 'reviews#flag'
-      get 'hide', to: 'reviews#hide'
+      put 'flag', to: 'reviews#flag'
+      put 'clear-flag', to: 'reviews#clear_flag'
+      put 'hide', to: 'reviews#hide'
     end
   end
 

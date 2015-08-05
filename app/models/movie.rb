@@ -9,20 +9,24 @@ class Movie < ActiveRecord::Base
     self.all.sort{|x,y| y.full_movie_score <=> x.full_movie_score }[0..9]
   end
 
+  def unhidden_reviews
+    self.reviews.where(hidden:false)
+  end
+
   def trusted_reviews
-  	reviews.joins(:user).where('users.trusted' => true).sort do |x,y|
+  	unhidden_reviews.joins(:user).where('users.trusted' => true).sort do |x,y|
       y.get_upvotes.size <=> x.get_upvotes.size
     end
   end
 
   def user_reviews
-  	reviews.joins(:user).where('users.trusted' => false).sort do |x,y|
+  	unhidden_reviews.joins(:user).where('users.trusted' => false).sort do |x,y|
       y.get_upvotes.size <=> x.get_upvotes.size
     end
   end
 
   def all_reviews
-  	reviews.joins(:user).sort do |x,y|
+  	unhidden_reviews.joins(:user).sort do |x,y|
       x_addition = if x.user.trusted then 2 else 1 end
       y_addition = if y.user.trusted then 2 else 1 end
       y.get_upvotes.size*y_addition <=> x.get_upvotes.size*x_addition

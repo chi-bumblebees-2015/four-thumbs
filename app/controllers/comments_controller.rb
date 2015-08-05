@@ -19,11 +19,23 @@ class CommentsController < ApplicationController
 
   def flag
     @comment = Comment.find(params[:id])
-    @review = @comment.review
     if current_user
-      @comment.update(flagged: true)
+      if current_user.disliked? @comment
+        @comment.undisliked_by current_user
+      else
+        @comment.disliked_by current_user
+        @comment.update(flagged: true)
+      end
     end
-    redirect_to @review
+    redirect_to :back
+  end
+
+  def clear_flag
+    @comment = Comment.find(params[:id])
+    if current_user.admin == true
+      @comment.update(flagged: false)
+    end
+    redirect_to :back
   end
 
   def hide
@@ -31,7 +43,7 @@ class CommentsController < ApplicationController
     if current_user.admin == true
       @comment.update(hidden: true, flagged: false)
     end
-    redirect_to "/"
+    redirect_to :back
   end
 
   private

@@ -13,6 +13,15 @@ feature "User can write reviews" do
     click_button 'Submit'
     visit '/movies/1'
     expect(page).to have_content("Add Your Review")
+    find('#add-review').click
+    within("form") do
+      fill_in 'review_title', :with => "This movie is terrible"
+      fill_in 'review_rating', :with => '3'
+      fill_in 'review_content', :with => "There are no dinosaurs."
+      click_button 'Create Review'
+    end
+    expect(page).to have_content("There are no dinosaurs.")
+    expect(page).to have_content("This movie is terrible")
   end
 
 end

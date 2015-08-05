@@ -12,7 +12,7 @@
 <p>Likes: <%= @review.get_upvotes.size %> |
   <% if current_user %>
     <%= link_to like_review_path(@review), method: :put do %>
-      <% if (current_user.voted_for? @review) %>
+      <% if (current_user.liked? @review) %>
         Unlike
       <% else %>
         Like!
@@ -30,7 +30,13 @@
 </p>
 
 <% if current_user %>
-  <a href="/reviews/<%= @review.id %>/flag">Flag Review</a>
+  <%= link_to flag_review_path(@review), method: :put do %>
+    <% if (current_user.disliked? @review) %>
+      Unflag Review
+    <% else %>
+      Flag Review
+    <% end %>
+  <% end %>
 <% end %>
 
 <% if @review.user == current_user %>
@@ -40,9 +46,7 @@
 <div id="comments-area">
   <h4>Comments</h4>
   <% @comments.each do |comment| %>
-    <div class="comment">
-      <%= render partial: "comments/comment", locals: { comment: comment} %>
-    </div>
+    <%= render partial: "comments/render_comment", locals: { comment: comment } %>
   <%end%>
 
   <%if session[:user_id] %>

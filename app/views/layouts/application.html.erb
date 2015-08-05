@@ -28,10 +28,10 @@
       <ul class="right hide-on-med-and-down">
       <li><a href="/all">All Movies</a></li>
       <li><a href="/popular_movies">Popular Movies</a></li>
-      <li><a href="/popular_reviews">Popular Reviews</a></li>
+      <li><a href="/recent_reviews">Recent Reviews</a></li>
         <% if current_user %>
           <li><a href="/users/<%= current_user.id %>">Welcome, <%= current_user.name %></a></li>
-          <% if current_user.admin = true %>
+          <% if current_user.admin == true %>
             <li><a href="/admin">Admin Dashboard</a></li>
           <% end %>
           <li><a id="logout" href="/logout">Log out</a></li>

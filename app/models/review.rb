@@ -14,11 +14,17 @@ class Review < ActiveRecord::Base
   end
 
   def self.all_flagged
-    Review.where(flagged: true)
+    Review.where(flagged: true).sort_by do |comment|
+      comment.get_dislikes.size
+    end.reverse
   end
 
   def self.best_reviews
     self.all.sort{|a,b| b.get_upvotes.size <=> a.get_upvotes.size}[0..9]
+  end
+
+  def self.recent_reviews
+    self.all.sort{|a,b| b.created_at <=> a.created_at}[0..9]
   end
 
 end

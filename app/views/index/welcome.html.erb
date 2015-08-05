@@ -17,7 +17,7 @@
       <!--   Icon Section   -->
       <div class="row">
         <div class="col s6">
-          
+
             <h2 class="title">Popular Movies</h2>
             <ul><div class="popular-list">
             <% @popular_movies.each do |movie| %>
@@ -26,8 +26,8 @@
           </div>
         <div class="col s1"></div>
         <div class="col s6">
-            <h2 class="title">Popular Reviews</h2>
-             <ul><div class="popular-list"><% @popular_reviews.each do |review| %>
+            <h2 class="title">Recent Reviews</h2>
+             <ul><div class="popular-list"><% @recent_reviews.each do |review| %>
               <li><%= link_to review.title, review %></li>
               <% end %></div></ul></p>
         </div>
