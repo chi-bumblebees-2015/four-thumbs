@@ -6,8 +6,7 @@ class Movie < ActiveRecord::Base
   end
 
   def self.rank_movies
-    # self.all[0..15].map{|movie| movie.full_movie_score}
-    self.all.sort{|x,y| x.full_movie_score <=> y.full_movie_score }[0..9]
+    self.all.sort{|x,y| y.full_movie_score <=> x.full_movie_score }[0..9]
   end
 
   def trusted_reviews
@@ -32,15 +31,15 @@ class Movie < ActiveRecord::Base
 
   def full_movie_score
     if self.reviews && self.reviews.select{|review| !review.user.trusted }.count > 0
-      user_review_number_total = self.reviews.select{|review| !review.user.trusted }.map{|review| review.user.reviews.count * review.rating}.reduce(:+)
-      user_review_number_count = self.reviews.select{|review| !review.user.trusted }.map{|review| review.user.reviews.count}.reduce(:+)
+      user_review_number_total = self.reviews.select{|review| !review.user.trusted }.map{|review| review.rating}.reduce(:+)
+      user_review_number_count = self.reviews.select{|review| !review.user.trusted }.count
     else
       user_review_number_count = 0
       user_review_number_total = 0
     end
     if self.reviews && self.reviews.select{|review| review.user.trusted }.count > 0
-      trusted_review_number_total = self.reviews.select{|review| review.user.trusted }.map{|review| review.user.reviews.count * review.rating}.reduce(:+)
-      trusted_review_number_count = self.reviews.select{|review| review.user.trusted }.map{|review| review.user.reviews.count}.reduce(:+)
+      trusted_review_number_total = self.reviews.select{|review| review.user.trusted }.map{|review| review.rating}.reduce(:+)
+      trusted_review_number_count = self.reviews.select{|review| review.user.trusted }.count
     else
       trusted_review_number_count = 0
       trusted_review_number_total = 0
@@ -56,11 +55,5 @@ class Movie < ActiveRecord::Base
     full_movie_score.round
   end
 
-
-
-<<<<<<< HEAD
-=======
-
->>>>>>> ff862925288a63dec191b0432a6994f0709b3ec2
 
 end

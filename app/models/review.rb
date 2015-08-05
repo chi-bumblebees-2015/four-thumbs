@@ -17,4 +17,8 @@ class Review < ActiveRecord::Base
     Review.where(flagged: true)
   end
 
+  def self.best_reviews
+    self.all.sort{|a,b| b.get_upvotes.size <=> a.get_upvotes.size}[0..9]
+  end
+
 end
