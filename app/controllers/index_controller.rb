@@ -24,4 +24,12 @@ class IndexController < ApplicationController
     end
   end
 
+  def popular_movies
+    @popular_movies = Movie.rank_movies
+  end
+
+  def popular_reviews
+    @popular_reviews = Review.best_reviews
+  end
+
 end

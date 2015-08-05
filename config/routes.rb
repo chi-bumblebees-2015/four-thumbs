@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/all' => 'index#alphabetical'
+  get '/popular_movies' => 'index#popular_movies'
+  get '/popular_reviews' => 'index#popular_reviews'
 
 
   resources :comments do
