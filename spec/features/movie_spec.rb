@@ -15,7 +15,7 @@ feature "User viewing a movie" do
 
   scenario "user can see 'User Reviews'" do
     visit '/movies/1'
-    find('#user_tab').click
+    find('#user-tab').click
     expect(page).to have_content("User Reviews")
   end
 
