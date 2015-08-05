@@ -1,43 +1,61 @@
 <h2><%= @review.title %> | <%= link_to @review.movie.name, @review.movie %></h2>
 <h4>By: <%= link_to @review.user.name, @review.user %> <%= @review.user.trusted_string %></h4>
 
-<p><%= @review.get_upvotes.size %> Likes</p>
-<% if current_user %>
-  <%= link_to like_review_path(@review), method: :put do %>
-    <% if (current_user.voted_for? @review) %>
-      Unlike
-    <% else %>
-      Like!
-    <% end %>
-  <% end %>
-<% end %>
-
 <div>
-  <p>Rating: <%= @review.rating %> thumbs up</p>
-  <p><%= @review.content %></p>
+  <p>
+    <% @review.movie.movie_score.times do %>
+    <%= image_tag('Thumb_Logo.png', :height => 30) %>
+    <% end %>
+  </p>
 </div>
 
-<p>Created at: <%= @review.created_at %></p>
-<% if @review.updated_at != @review.created_at %>
-  <p>Updated at: <%= @review.updated_at %></p>
+<p>Likes: <%= @review.get_upvotes.size %> |
+  <% if current_user %>
+    <%= link_to like_review_path(@review), method: :put do %>
+      <% if (current_user.voted_for? @review) %>
+        Unlike
+      <% else %>
+        Like!
+      <% end %>
+    <% end %>
+  <% end %>
+</p>
+
+<p><%= @review.content %></p>
+
+<p>Posted: <%= @review.created_at %>
+  <% if @review.updated_at != @review.created_at %>
+    <!-- |<em> Edited</em> -->
+  <% end %>
+</p>
+
+<% if current_user %>
+  <a href="/reviews/<%= @review.id %>/flag">Flag Review</a>
 <% end %>
 
 <% if @review.user == current_user %>
   <%= link_to "Edit your review", edit_movie_review_path(@review.movie, @review) %>
 <% end %>
 
-<h4>Comments</h4>
-<% @comments.each do |comment| %>
-  <p><%= comment.user.name%> <strong><%= comment.user.trusted_string %></strong>
-    <% if comment.user == @review.user %>
-      | <strong>Original Reviewer</strong>
-    <% end %>
-  </p>
-  <p><%= comment.content %></p>
-<%end%>
+<div id="comments-area">
+  <h4>Comments</h4>
+  <% @comments.each do |comment| %>
+    <div class="comment">
+      <p class="commenter"><%= comment.user.name%> <strong><%= comment.user.trusted_string %></strong>
+        <% if comment.user == @review.user %>
+          | <strong>Original Reviewer</strong>
+        <% end %>
+      </p>
+      <p><%= comment.content %></p>
+      <% if current_user %>
+        <a href="/comments/<%= comment.id %>/flag">Flag Comment</a>
+      <% end %>
+    </div>
+  <%end%>
 
-<%if session[:user_id] %>
-  <%= render partial: "comments/comments_form", locals: { review: @review, new_comment: @new_comment } %>
-<%else%>
-  <p>To comment, you need to <a href="/login">login</a> or <a href="/users/new">register</a> for an account.</p>
-<%end%>
+  <%if session[:user_id] %>
+    <%= render partial: "comments/comments_form", locals: { review: @review, new_comment: @new_comment } %>
+  <%else%>
+    <p>To comment, you need to <a href="/login">login</a> or <a href="/users/new">register</a> for an account.</p>
+  <%end%>
+</div>

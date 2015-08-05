@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804145354) do
+ActiveRecord::Schema.define(version: 20150805001901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,10 @@ ActiveRecord::Schema.define(version: 20150804145354) do
     t.integer  "review_id"
     t.integer  "user_id"
     t.string   "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "flagged",    default: false
+    t.boolean  "hidden",     default: false
   end
 
   add_index "comments", ["review_id"], name: "index_comments_on_review_id", using: :btree
@@ -33,6 +35,7 @@ ActiveRecord::Schema.define(version: 20150804145354) do
     t.text     "plot_summary"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "poster"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -41,8 +44,10 @@ ActiveRecord::Schema.define(version: 20150804145354) do
     t.integer  "rating"
     t.integer  "user_id"
     t.integer  "movie_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "flagged",    default: false
+    t.boolean  "hidden",     default: false
   end
 
   add_index "reviews", ["movie_id"], name: "index_reviews_on_movie_id", using: :btree

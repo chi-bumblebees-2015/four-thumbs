@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'index#welcome'
 
+  get 'admin' => 'index#admin'
   get 'users/login' => 'users#login'
 
   # Example of regular route:
@@ -21,18 +22,28 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-resources :reviews do
-  resources :comments, only: [:create]
-end
+  resources :reviews do
+    resources :comments, only: [:create]
+  end
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/all' => 'index#alphabetical'
 
+
+  resources :comments do
+    member do
+      get 'flag', to: 'comments#flag'
+      get 'hide', to: 'comments#hide'
+    end
+  end
+
   resources :reviews do
     member do
       put 'like', to: 'reviews#upvote'
+      get 'flag', to: 'reviews#flag'
+      get 'hide', to: 'reviews#hide'
     end
   end
 
