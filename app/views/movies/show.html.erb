@@ -1,5 +1,9 @@
 <h1><%= @movie.name %></h1>
 
+<% if current_user.admin %>
+  <h4 class="edit"><%= link_to "Update Movie Info", edit_movie_path(@movie) %></h4>
+<% end %>
+
 <% if current_user %>
   <% if @movie.reviews.find_by(user: current_user) %>
     <h4 class="edit"><%= link_to "Update Your Review", edit_movie_review_path(@movie, @movie.reviews.find_by(user: current_user)) %></h4>
